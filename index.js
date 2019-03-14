@@ -4,6 +4,8 @@ const express = require('express');
 // expressアプリを生成する
 const app = express();
 
+app.use(express.static('web')); //webフォルダの中身を公開する
+
 // ルート(http://localhost:3000/api/vi/list)にアクセスしてきたときにTODOリストを返す.
 app.get('/api/vi/list',function(req,res){
     // クライアントに送るJSON
