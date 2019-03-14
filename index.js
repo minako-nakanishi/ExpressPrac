@@ -16,6 +16,5 @@ app.get('/api/vi/list',function(req,res){
 });
 
 
-
 // ポート番号3000でサーバーを立てる
 app.listen(3000,()=>console.log('Listening on port'));
