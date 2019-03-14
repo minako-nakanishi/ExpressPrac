@@ -12,7 +12,12 @@
         
         <script>
             // APIからJSONを取得する
-            fetch('./api/vi/list').then((response)=> response.json()).then((todoList)=>{
+            fetch('./api/vi/list')
+            //.then((response)=> response.json())
+            .then(response=>{
+                return response.json()
+            })
+            .then((todoList)=>{
                 const todoContainer = document.querySelector('#to-do-container'); // チェックリストの要素を取得する
                 todoContainer.innerHTML = ''; //要素の中身を削除
 
@@ -21,11 +26,11 @@
                     const label = document.createElement('label'); //ラベル要素
                     const checkbox = document.createElement('input');
                     checkbox.type = 'checkbox'; //inputタグのtypeはcheckbox
-                    checkbox.checked = item.done;
-                    const text = new Text(item.title);
+                    checkbox.checked = item.done; //doneがtrueのものはチェックボックスにチェックを入れる
+                    const text = new Text(item.title); //JSONで送られてきたtitleを抽出する
 
-                    label.appendChild(checkbox);
-                    label.appendChild(text);
+                    label.appendChild(checkbox); //<label>の中に<input type="checkbox">を入れる
+                    label.appendChild(text); //<label><input type="checkbox">の中に抽出したラベル文字を挿入する
                     
                     li.appendChild(label);
 
